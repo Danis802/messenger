@@ -1,6 +1,7 @@
 package com.example.messenger.controllers;
 
 import com.example.messenger.dto.UserDTO;
+import com.example.messenger.repositories.SessionRepository;
 import com.example.messenger.serveces.SessionService;
 import com.example.messenger.serveces.UserService;
 import org.springframework.http.HttpStatus;
@@ -23,10 +24,9 @@ public class UserController {
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
-//    @PostMapping("/login")
-//    public String authorise(@RequestBody UserDTO user){
-//        if (userService.isUser(user)){
-//            return sessionService.getSession(user.getLogin());
-//        }
-//    }
+    @PostMapping("/login")
+    public ResponseEntity<UserDTO> authorise(@RequestBody UserDTO user){
+        UserDTO loggedUser = userService.auth(user);
+        return  new ResponseEntity<>(loggedUser, HttpStatus.OK);
+    }
 }

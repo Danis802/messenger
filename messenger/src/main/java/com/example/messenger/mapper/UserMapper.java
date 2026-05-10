@@ -9,6 +9,6 @@ public class UserMapper {
     }
 
     public static Users mapUserToJPA(UserDTO user){
-        return new Users(user.getLogin(), user.getName());
+        return new Users(user.getLogin(), user.getName(), user.getPassword());
     }
 }

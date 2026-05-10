@@ -10,10 +10,21 @@ public class Users {
     private String login;
     @Column(name = "name", nullable = false, columnDefinition = "TEXT")
     private String name;
+    @Column(name="password", nullable = false, columnDefinition = "TEXT")
+    private String password;
 
-    public Users(String login, String name) {
+    public Users(String login, String name, String password) {
         this.login = login;
         this.name = name;
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getLogin() {
