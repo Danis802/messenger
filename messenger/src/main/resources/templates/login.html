@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Вход в аккаунт | Добро пожаловать</title>
+    <!--    <script src="/static/script/login.js"></script>-->
+    <link href="/static/style/loginStyle.css" rel="stylesheet">
+</head>
+<body>
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="card-header">
+            <h1>Вход в аккаунт</h1>
+        </div>
+
+        <form id="loginForm"  class="auth-form" novalidate th:action="@{/login}" method="post">
+            <div class="input-field">
+                <label for="login">Логин</label>
+                <input type="text" id="login" name="login" placeholder="Введите логин" autocomplete="username" required>
+
+            </div>
+
+            <div class="input-field">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password" placeholder="Введите пароль" required>
+
+            </div>
+
+            <button type="submit" class="btn-submit">Войти →</button>
+
+            <div class="form-footer" id="chats">
+                <a href="/register" id="registerLink">Создать аккаунт</a>
+            </div>
+        </form>
+
+        <div id="formMessage" class="form-message" role="alert" aria-live="polite"></div>
+    </div>
+</div>
+</body>
+</html>
