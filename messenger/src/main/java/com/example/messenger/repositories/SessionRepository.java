@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface SessionRepository extends JpaRepository<Sessions,Long> {
     Optional<SessionDTO> findBySession(String session);
+    Optional<SessionDTO> findByLogin(String login);
 }
