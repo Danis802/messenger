@@ -1,9 +1,9 @@
 package com.example.messenger.controllers;
 
 import com.example.messenger.dto.UserDTO;
-import com.example.messenger.repositories.SessionRepository;
 import com.example.messenger.serveces.SessionService;
 import com.example.messenger.serveces.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,11 +16,16 @@ public class UserController {
     private UserService userService;
     private SessionService sessionService;
 
+    public UserController(@Autowired UserService userService, @Autowired SessionService sessionService){
+        this.userService = userService;
+        this.sessionService = sessionService;
+    }
+
     @PutMapping("/register")
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO user){
         userService.createUser(user);
         String session = sessionService.addSession(user.getLogin());
-        UserDTO savedUser = new UserDTO(user.getLogin(), null, null, session);
+        UserDTO savedUser = new UserDTO(user.getLogin(), user.getName(), null, null);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 

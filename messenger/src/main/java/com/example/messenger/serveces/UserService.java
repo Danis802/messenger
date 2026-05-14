@@ -6,18 +6,17 @@ import com.example.messenger.dto.UserDTO;
 import com.example.messenger.mapper.UserMapper;
 import com.example.messenger.repositories.SessionRepository;
 import com.example.messenger.repositories.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
+@AllArgsConstructor
 public class UserService {
     private UserRepository userRepository;
-    private SessionRepository sessionRepository;
 
     public UserDTO createUser(UserDTO userDTO){
-        String sessionKey = UUID.randomUUID().toString();
-        sessionRepository.save(new Sessions(userDTO.getLogin(), sessionKey));
         Users user = UserMapper.mapUserToJPA(userDTO);
         Users savedUser = userRepository.save(user);
         return UserMapper.mapUserToDTO(savedUser);
