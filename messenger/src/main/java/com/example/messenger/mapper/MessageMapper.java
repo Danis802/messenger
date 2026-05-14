@@ -9,6 +9,6 @@ public class MessageMapper {
     }
 
     public static Message mapToJPA(MessageDTO mes){
-        return new Message(mes.getId(), mes.getContent());
+        return new Message(mes.getId(), mes.getContent(), mes.getSender());
     }
 }

@@ -21,10 +21,13 @@ public class Message {
     private Long id;
     @Column(name = "content", nullable = false, columnDefinition = "TEXT")
     private String content;
+    @Column(name = "sender", nullable = false, columnDefinition = "TEXT")
+    private String sender;
 
-    public Message(Long id, String content) {
+    public Message(Long id, String content, String sender) {
         this.id = id;
         this.content = content;
+        this.sender = sender;
     }
 
     public Long getId() {
