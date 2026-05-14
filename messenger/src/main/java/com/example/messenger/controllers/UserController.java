@@ -16,7 +16,7 @@ public class UserController {
     private UserService userService;
     private SessionService sessionService;
 
-    @PutMapping("/addUser")
+    @PutMapping("/register")
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO user){
         userService.createUser(user);
         String session = sessionService.addSession(user.getLogin());

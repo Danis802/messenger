@@ -8,4 +8,6 @@ public class FrontController {
     @GetMapping("/")
     public String renderMain(){return "index";}
 
+    @GetMapping("/register")
+    public String renderReg(){return "register";}
 }

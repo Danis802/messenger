@@ -5,20 +5,39 @@ import java.util.List;
 public class ChatDTO {
     private Long id;
     private String name;
+    private String creatorLogin;
+    private String memberLogin;
+    private String session;
 
-    public List<String> getMembers() {
-        return members;
+    public String getSession() {
+        return session;
     }
 
-    public void setMembers(List<String> members) {
-        this.members = members;
+    public void setSession(String session) {
+        this.session = session;
     }
 
-    private List<String> members;
+    public String getCreatorLogin() {
+        return creatorLogin;
+    }
 
-    public ChatDTO(Long id, String name){
+    public void setCreatorLogin(String creatorLogin) {
+        this.creatorLogin = creatorLogin;
+    }
+
+    public String getMemberLogin() {
+        return memberLogin;
+    }
+
+    public void setMemberLogin(String memberLogin) {
+        this.memberLogin = memberLogin;
+    }
+
+    public ChatDTO(Long id, String name, String creatorLogin, String memberLogin){
         this.id = id;
         this.name = name;
+        this.creatorLogin = creatorLogin;
+        this.memberLogin = memberLogin;
     }
 
     public Long getId() {

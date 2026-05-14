@@ -4,6 +4,7 @@ import com.example.messenger.database.Chat;
 import com.example.messenger.dto.ChatDTO;
 import com.example.messenger.mapper.ChatMapper;
 import com.example.messenger.repositories.ChatRepository;
+import com.example.messenger.repositories.SessionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +12,16 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class ChatService {
     private ChatRepository chatRepository;
+    private SessionRepository sessionRepository;
 
     public ChatDTO createChat(ChatDTO chatDTO){
-        Chat chat = ChatMapper.mapToJPA(chatDTO);
-        Chat savedChat = chatRepository.save(chat);
-        return ChatMapper.mapToDTO(savedChat);
+        if (sessionRepository.findBySession(chatDTO.getSession())){
+            Chat chat = ChatMapper.mapToJPA(chatDTO);
+            Chat savedChat = chatRepository.save(chat);
+            return ChatMapper.mapToDTO(savedChat);
+        }else{
+            throw new RuntimeException("User don't logged in");
+        }
+
     }
 }

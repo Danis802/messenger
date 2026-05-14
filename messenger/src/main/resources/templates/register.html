@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Создать аккаунт | Добро пожаловать</title>
     <!--    <script src="/static/script/register.js"></script>-->
-    <link href="/static/style/registerStyle.css" rel="stylesheet">
+    <link href="/static/style/register.css" rel="stylesheet">
 </head>
 <body>
 <div class="auth-container">
@@ -14,7 +14,7 @@
             <h1>Создать аккаунт</h1>
         </div>
 
-        <form id="registerForm" th:action="@{/register}" method = "post" class="auth-form" novalidate>
+        <form id="registerForm" th:action="@{/register}" method = "put" class="auth-form" novalidate>
             <div class="input-field">
                 <label for="login">Имя пользователя</label>
                 <div class="input-wrapper">
@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <button class="btn-submit" id="reg-submit">Создать →</button>
+            <button class="btn-submit" id="reg-submit" href="/">Создать →</button>
 
             <div class="form-footer">
                 <a href="/login" id="registerLink">Войти в аккаунт</a>

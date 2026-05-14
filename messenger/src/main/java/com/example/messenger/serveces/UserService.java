@@ -22,10 +22,10 @@ public class UserService {
 
         UserDTO user = userRepository.findByLogin(userDTO.getLogin())
                 .orElseThrow(() ->
-                        new RuntimeException("Пользователь не найден"));
+                        new RuntimeException("User not found"));
 
         if (!user.getPassword().equals(userDTO.getPassword())) {
-            throw new RuntimeException("Неверный пароль");
+            throw new RuntimeException("Wrong password");
         }
         return user;
     }

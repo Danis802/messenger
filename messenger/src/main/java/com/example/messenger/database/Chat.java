@@ -24,10 +24,32 @@ public class Chat {
     private Long id;
     @Column(name = "name", nullable = false, columnDefinition = "TEXT")
     private String name;
+    @Column(name = "creator", nullable = false, columnDefinition = "TEXT")
+    private String creatorLogin;
+    @Column(name = "member", nullable = false, columnDefinition = "TEXT")
+    private String memberLogin;
 
-    public Chat(Long id, String name) {
+    public Chat(Long id, String name, String creatorLogin, String memberLogin) {
         this.id = id;
         this.name = name;
+        this.creatorLogin = creatorLogin;
+        this.memberLogin = memberLogin;
+    }
+
+    public String getCreatorLogin() {
+        return creatorLogin;
+    }
+
+    public void setCreatorLogin(String creatorLogin) {
+        this.creatorLogin = creatorLogin;
+    }
+
+    public String getMemberLogin() {
+        return memberLogin;
+    }
+
+    public void setMemberLogin(String memberLogin) {
+        this.memberLogin = memberLogin;
     }
 
     public String getName() {
@@ -46,6 +68,4 @@ public class Chat {
         this.id = id;
     }
 
-    @OneToMany(mappedBy = "chat", cascade = CascadeType.ALL)
-    private Set<ChatToUser> userChats = new HashSet<>();
 }
