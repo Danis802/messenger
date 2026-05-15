@@ -1,6 +1,7 @@
 package com.example.messenger.database;
 
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -8,6 +9,7 @@ import java.util.Set;
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
 @Entity
+@NoArgsConstructor
 @Table(name="Chat")
 public class Chat {
     @Id

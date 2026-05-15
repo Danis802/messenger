@@ -5,17 +5,17 @@ import jakarta.persistence.*;
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
 @Entity
-@Table(name="Message")
-public class Message {
+@Table(name="Messages")
+public class Messages {
     @Id
     @SequenceGenerator(
-            name="mes_sequense",
-            sequenceName = "mes_sequense",
+            name="mes_sequence",
+            sequenceName = "mes_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = SEQUENCE,
-            generator = "mes_sequense"
+            generator = "mes_sequence"
     )
     @Column(name = "id", updatable = false)
     private Long id;
@@ -24,11 +24,15 @@ public class Message {
     @Column(name = "sender", nullable = false, columnDefinition = "TEXT")
     private String sender;
 
-    public Message(Long id, String content, String sender) {
+    public Messages(Long id, String content, String sender) {
         this.id = id;
         this.content = content;
         this.sender = sender;
     }
+
+    public String getSender() { return sender; }
+
+    public void setSender(String sender) { this.sender = sender; }
 
     public Long getId() {
         return id;

@@ -16,9 +16,13 @@ public class ChatService {
 
     public ChatDTO createChat(ChatDTO chatDTO){
         if (sessionRepository.findBySession(chatDTO.getSession()).isPresent()){
-            Chat chat = ChatMapper.mapToJPA(chatDTO);
-            Chat savedChat = chatRepository.save(chat);
-            return ChatMapper.mapToDTO(savedChat);
+            if (sessionRepository.findByLogin(chatDTO.getMemberLogin()).isPresent()){
+                Chat chat = ChatMapper.mapToJPA(chatDTO);
+                Chat savedChat = chatRepository.save(chat);
+                return ChatMapper.mapToDTO(savedChat);
+            }else{
+                throw new RuntimeException("Member does not exist");
+            }
         }else{
             throw new RuntimeException("User is not logged in");
         }

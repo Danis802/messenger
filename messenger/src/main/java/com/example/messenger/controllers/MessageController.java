@@ -21,6 +21,6 @@ public class MessageController {
     @PutMapping("/chat/{id}")
     public ResponseEntity<MessageDTO> createMessage(@RequestBody MessageDTO mes, @PathVariable Long id){
         MessageDTO savedMes = messageService.createMessage(mes, id);
-        return new ResponseEntity<>(savedMes, HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
