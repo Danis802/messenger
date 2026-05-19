@@ -25,7 +25,7 @@ public class UserController {
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO user){
         userService.createUser(user);
         String session = sessionService.addSession(user.getLogin());
-        UserDTO savedUser = new UserDTO(user.getLogin(), user.getName(), null, null);
+        UserDTO savedUser = new UserDTO(user.getLogin(), user.getName(), null, session);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 

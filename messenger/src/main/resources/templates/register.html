@@ -1,49 +1,47 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Создать аккаунт | Добро пожаловать</title>
-    <!--    <script src="/static/script/register.js"></script>-->
-    <link href="/static/style/register.css" rel="stylesheet">
+    <title>Создание аккаунта</title>
+    <link rel="stylesheet" href="/static/style/register.css">
+    <script src="/static/script/register.js"></script>
 </head>
 <body>
 <div class="auth-container">
     <div class="auth-card">
         <div class="card-header">
-            <h1>Создать аккаунт</h1>
+            <h1>Регистрация</h1>
         </div>
 
-        <form id="registerForm" th:action="@{/register}" method = "put" class="auth-form" novalidate>
+        <form id="loginForm" class="auth-form" novalidate>
             <div class="input-field">
-                <label for="login">Имя пользователя</label>
+                <label for="name">Имя пользователя</label>
                 <div class="input-wrapper">
-                    <input type="text" id="name" name="name" placeholder="Введите имя" autocomplete="username" required>
+                    <input type="text" id="name" name="name" placeholder="name" required>
                 </div>
             </div>
 
             <div class="input-field">
                 <label for="login">Логин</label>
                 <div class="input-wrapper">
-                    <input type="text" id="login" name="login" placeholder="Введите логин" autocomplete="username" required>
+                    <input type="text" id="login" name="login" placeholder="username" required>
                 </div>
             </div>
 
             <div class="input-field">
                 <label for="password">Пароль</label>
                 <div class="input-wrapper">
-                    <input type="password" id="password" name="password" placeholder="Введите пароль" autocomplete="current-password" required>
+                    <input type="password" id="password" name="password" placeholder="Введите пароль" required>
                 </div>
             </div>
 
-            <button class="btn-submit" id="reg-submit" href="/">Создать →</button>
+            <button type="submit" class="btn-submit" id="submit-btn">Войти →</button>
 
             <div class="form-footer">
-                <a href="/login" id="registerLink">Войти в аккаунт</a>
+                <a href="/login" id="registerLink">Создать аккаунт</a>
             </div>
         </form>
-
-        <div id="formMessage" class="form-message" role="alert" aria-live="polite"></div>
     </div>
 </div>
 </body>
