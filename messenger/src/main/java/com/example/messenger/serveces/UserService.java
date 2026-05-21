@@ -4,6 +4,7 @@ import com.example.messenger.database.Sessions;
 import com.example.messenger.database.Users;
 import com.example.messenger.dto.SessionDTO;
 import com.example.messenger.dto.UserDTO;
+import com.example.messenger.exceptions.LoginAlreadyExistsException;
 import com.example.messenger.mapper.UserMapper;
 import com.example.messenger.repositories.SessionRepository;
 import com.example.messenger.repositories.UserRepository;
@@ -19,9 +20,14 @@ public class UserService {
     private SessionRepository sessionRepository;
 
     public UserDTO createUser(UserDTO userDTO){
-        Users user = UserMapper.mapUserToJPA(userDTO);
-        Users savedUser = userRepository.save(user);
-        return UserMapper.mapUserToDTO(savedUser);
+        if (userRepository.findByLogin(userDTO.getLogin()).isEmpty()){
+            Users user = UserMapper.mapUserToJPA(userDTO);
+            Users savedUser = userRepository.save(user);
+            return UserMapper.mapUserToDTO(savedUser);
+        }
+        else{
+            throw new LoginAlreadyExistsException();
+        }
     }
 
     public UserDTO auth(UserDTO userDTO) {

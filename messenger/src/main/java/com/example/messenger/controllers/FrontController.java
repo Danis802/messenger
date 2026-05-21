@@ -10,4 +10,7 @@ public class FrontController {
 
     @GetMapping("/register")
     public String renderReg(){return "register";}
+
+    @GetMapping("/login")
+    public String renderLog(){return "login";}
 }

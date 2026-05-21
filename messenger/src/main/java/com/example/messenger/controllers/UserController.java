@@ -22,11 +22,17 @@ public class UserController {
     }
 
     @PutMapping("/register")
-    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO user){
+    public ResponseEntity<ApiResponse<UserDTO>> createUser(@RequestBody UserDTO user){
         userService.createUser(user);
         String session = sessionService.addSession(user.getLogin());
         UserDTO savedUser = new UserDTO(user.getLogin(), user.getName(), null, session);
-        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+        return ResponseEntity.ok(
+                new ApiResponse<>(
+                        true,
+                        "Successful registration",
+                        savedUser
+                )
+        );
     }
 
     @PostMapping("/login")
