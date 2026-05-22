@@ -25,12 +25,6 @@ async function regDataSend(event){
                     password: password
                 })
                 });
-//                .then(response => response.json())
-//                .then(data => {
-//                console.log("Отправлено:", data);
-//                window.location.href = "/";
-//                localStorage.setItem("session",data['session']);
-//                });
     const data = await response.json();
 
     if (!data.success) {

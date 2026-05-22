@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Чат · Диалог</title>
+    <link rel="stylesheet" href="/static/style/chat.css">
+    <script src="/static/script/chat.js"></script>
+</head>
+<body>
+<div class="chat-container">
+    <!-- Шапка чата -->
+    <div class="chat-header">
+    </div>
+
+    <!-- Область сообщений -->
+    <div class="chat-messages" id="chat-messages">
+        <!-- Сообщения будут добавляться сюда динамически -->
+    </div>
+
+    <!-- Форма отправки сообщения -->
+    <div class="chat-input-container">
+        <form id="messageForm" class="message-form">
+            <input type="text" id="messageInput" placeholder="Напишите сообщение..." autocomplete="off" required>
+            <button type="submit" aria-label="Отправить" id="submit-btn">-></button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

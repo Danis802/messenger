@@ -23,11 +23,22 @@ public class Messages {
     private String content;
     @Column(name = "sender", nullable = false, columnDefinition = "TEXT")
     private String sender;
+    @Column(name = "chatId", nullable = false)
+    private Long chatId;
 
-    public Messages(Long id, String content, String sender) {
+    public Messages(Long id, String content, String sender, Long chatId) {
         this.id = id;
         this.content = content;
         this.sender = sender;
+        this.chatId = chatId;
+    }
+
+    public Long getChatId() {
+        return chatId;
+    }
+
+    public void setChatId(Long chatId) {
+        this.chatId = chatId;
     }
 
     public String getSender() { return sender; }

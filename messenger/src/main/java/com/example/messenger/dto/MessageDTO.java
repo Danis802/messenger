@@ -5,6 +5,15 @@ public class MessageDTO {
     private String content;
     private String sender;
     private String session;
+    private Long chatId;
+
+    public Long getChatId() {
+        return chatId;
+    }
+
+    public void setChatId(Long chatId) {
+        this.chatId = chatId;
+    }
 
     public String getSender() {
         return sender;
@@ -22,9 +31,10 @@ public class MessageDTO {
         this.session = session;
     }
 
-    public MessageDTO(Long id, String content) {
+    public MessageDTO(Long id, String content, String sender) {
         this.id = id;
         this.content = content;
+        this.sender = sender;
     }
 
     public Long getId() {
