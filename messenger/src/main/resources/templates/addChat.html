@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Создание аккаунта</title>
+    <link rel="stylesheet" href="/static/style/register.css">
+    <script src="/static/script/addChat.js"></script>
+</head>
+<body>
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="card-header">
+            <h1>Создание чата</h1>
+        </div>
+
+        <form id="loginForm" class="auth-form" novalidate>
+            <div class="input-field">
+                <label for="name">Название чата</label>
+                <div class="input-wrapper">
+                    <input type="text" id="name" name="name" placeholder="Название" required>
+                </div>
+            </div>
+
+            <div class="input-field">
+                <label for="login">Логин друга</label>
+                <div class="input-wrapper">
+                    <input type="text" id="login" name="login" placeholder="Логин" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submit-btn">Создать чат</button>
+
+            <div class="form-footer">
+                <a href="/" id="registerLink">На главную</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

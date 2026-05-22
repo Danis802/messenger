@@ -17,12 +17,10 @@ async function loadChats() {
 
     const chatList = document.getElementById('chats-grid');
 
-    // очищаем список
     if (chatList!=null){
         chatList.innerHTML = '';
     }
 
-    // создаём div для каждого чата
     chats.data.forEach(chat => {
         const chatDiv = document.createElement('div');
 

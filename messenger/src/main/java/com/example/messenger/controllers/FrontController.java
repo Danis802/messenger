@@ -13,4 +13,10 @@ public class FrontController {
 
     @GetMapping("/login")
     public String renderLog(){return "login";}
+
+    @GetMapping("/chat/{id}")
+    public String renderChat(){return "chat";}
+
+    @GetMapping("/chat/add")
+    public String renderAddChat(){return "addChat";}
 }
