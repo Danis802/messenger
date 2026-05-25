@@ -12,7 +12,8 @@ async function regDataSend(event){
     const login = document.getElementById("login").value;
     const name = document.getElementById("name").value;
 
-    const response = await fetch("http://localhost:8080/addChat",{
+//    const response = await fetch("http://192.168.0.173:8080/addChat",{
+        const response = await fetch("/addChat",{
                 method:"PUT",
                 credentials: 'include',
                 headers:{
@@ -20,8 +21,8 @@ async function regDataSend(event){
                 },
                 body: JSON.stringify({
                     name: name,
-                    login: login,
-                    session:const session = localStorage.getItem("session");
+                    memberLogin: login,
+                    session: session = localStorage.getItem("session")
                 })
                 });
 

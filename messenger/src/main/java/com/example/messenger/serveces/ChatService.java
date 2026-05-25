@@ -21,16 +21,16 @@ public class ChatService {
     private SessionRepository sessionRepository;
 
     public ChatDTO createChat(ChatDTO chatDTO){
-        if (sessionRepository.findBySession(chatDTO.getSession()).isPresent()){
-            if (sessionRepository.findByLogin(chatDTO.getMemberLogin()).isPresent()){
-                Chat chat = ChatMapper.mapToJPA(chatDTO);
-                Chat savedChat = chatRepository.save(chat);
-                return ChatMapper.mapToDTO(savedChat);
-            }else{
-                throw new RuntimeException("Member does not exist");
-            }
+        SessionDTO sessionDTO = sessionRepository.findBySession(chatDTO.getSession())
+                .orElseThrow(()-> new RuntimeException("User is not logged in"));
+        String creatorLogin = sessionDTO.getLogin();
+        if (sessionRepository.findByLogin(chatDTO.getMemberLogin()).isPresent()){
+            chatDTO.setCreatorLogin(creatorLogin);
+            Chat chat = ChatMapper.mapToJPA(chatDTO);
+            Chat savedChat = chatRepository.save(chat);
+            return ChatMapper.mapToDTO(savedChat);
         }else{
-            throw new RuntimeException("User is not logged in");
+            throw new RuntimeException("Member does not exist");
         }
 
     }
@@ -43,12 +43,14 @@ public class ChatService {
                 .orElse(Collections.emptyList());
         List<ChatDTO> memberChats = chatRepository.findByMemberLogin(login)
                 .orElse(Collections.emptyList());
-        if (creatorChats.isEmpty() && memberChats.isEmpty()){
-            throw new NoChatsException();
-        }else{
-            creatorChats.addAll(memberChats);
-            return creatorChats;
-        }
+//        if (creatorChats.isEmpty() && memberChats.isEmpty()){
+//            throw new NoChatsException();
+//        }else{
+//            creatorChats.addAll(memberChats);
+//            return creatorChats;
+//        }
+        creatorChats.addAll(memberChats);
+        return creatorChats;
 
     }
 }

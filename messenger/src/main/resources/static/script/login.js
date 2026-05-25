@@ -12,7 +12,8 @@ function regDataSend(event){
     const login = document.getElementById("login").value;
     const password = document.getElementById("password").value;
 
-    fetch("http://localhost:8080/login",{
+//    fetch("http://192.168.0.173:8080/login",{
+    fetch("/login",{
                 method:"POST",
                 credentials: 'include',
                 headers:{

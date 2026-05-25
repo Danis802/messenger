@@ -16,9 +16,15 @@ public class ChatController {
     public ChatController(@Autowired ChatService chatService){this.chatService = chatService;}
 
     @PutMapping("/addChat")
-    public ResponseEntity<ChatDTO> createChat(@RequestBody ChatDTO chat){
+    public ResponseEntity<ApiResponse<ChatDTO>> createChat(@RequestBody ChatDTO chat){
         ChatDTO savedChat = chatService.createChat(chat);
-        return new ResponseEntity<>(savedChat, HttpStatus.CREATED);
+        return ResponseEntity.ok(
+                new ApiResponse<>(
+                        true,
+                        "",
+                        savedChat
+                )
+        );
     }
 
     @GetMapping("/chat")

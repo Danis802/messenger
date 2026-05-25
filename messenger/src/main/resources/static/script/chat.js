@@ -11,7 +11,7 @@ async function sendMes(event){
         event.preventDefault();
         const content = document.getElementById("messageInput").value;
 
-        const response = await fetch(`http://localhost:8080/chat/${chatId}`,{
+        const response = await fetch(`/chat/${chatId}`,{
                     method:"PUT",
                     credentials: 'include',
                     headers:{
@@ -35,7 +35,8 @@ async function updateMes(){
 //    event.preventDefault();
     const session = localStorage.getItem("session");
 
-    const response = await fetch(`http://localhost:8080/chat/messages?session=${session}&chatId=${chatId}`,{
+//    const response = await fetch(`http://192.168.0.173:8080/chat/messages?session=${session}&chatId=${chatId}`,{
+    const response = await fetch(`/chat/messages?session=${session}&chatId=${chatId}`,{
                     method:"GET",
                     credentials: 'include',
                     headers:{

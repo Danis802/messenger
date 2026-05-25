@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
 async function loadChats() {
     const session = localStorage.getItem("session");
 
-    const response = await fetch(`http://localhost:8080/chat?session=${session}`,{
+//    const response = await fetch(`http://192.168.0.173:8080/chat?session=${session}`,{
+    const response = await fetch(`/chat?session=${session}`,{
                     method:"GET",
                     credentials: 'include',
                     headers:{

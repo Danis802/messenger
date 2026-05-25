@@ -13,7 +13,8 @@ async function regDataSend(event){
     const password = document.getElementById("password").value;
     const name = document.getElementById("name").value;
 
-    const response = await fetch("http://localhost:8080/register",{
+//    const response = await fetch("http://192.168.0.173:8080/register",{
+    const response = await fetch("/register",{
                 method:"PUT",
                 credentials: 'include',
                 headers:{
