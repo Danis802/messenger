@@ -38,4 +38,16 @@ public class ChatController {
                 )
         );
     }
+
+    @GetMapping("/chat/{id}/key")
+    public ResponseEntity<ApiResponse<String>> getKey(@PathVariable Long id, @RequestParam String session){
+        String key = chatService.getKey(id, session);
+        return ResponseEntity.ok(
+                new ApiResponse<>(
+                        true,
+                        "",
+                        key
+                )
+        );
+    }
 }

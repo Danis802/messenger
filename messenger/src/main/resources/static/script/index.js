@@ -1,11 +1,27 @@
 document.addEventListener("DOMContentLoaded", ()=>{
     loadChats();
+    const button = document.getElementById("quit");
+    button.addEventListener("click", quitAccount);
 })
 
-async function loadChats() {
-    const session = localStorage.getItem("session");
+function quitAccount(){
+    localStorage.removeItem("session");
+}
 
-//    const response = await fetch(`http://192.168.0.173:8080/chat?session=${session}`,{
+async function loadChats() {
+    let session;
+    try{
+        session = localStorage.getItem("session");
+    }catch(ReferenceError){
+        alert("Сперва войдите в аккаунт!");
+        return;
+    }
+        const messageDiv = document.getElementById('chats-grid');
+
+        if (messageDiv!=null){
+            messageDiv.innerHTML = '';
+        }
+
     const response = await fetch(`/chat?session=${session}`,{
                     method:"GET",
                     credentials: 'include',

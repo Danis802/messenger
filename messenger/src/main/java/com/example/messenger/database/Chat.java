@@ -30,12 +30,23 @@ public class Chat {
     private String creatorLogin;
     @Column(name = "member", nullable = false, columnDefinition = "TEXT")
     private String memberLogin;
+    @Column(name = "key", nullable = false, columnDefinition = "TEXT")
+    private String key;
 
-    public Chat(Long id, String name, String creatorLogin, String memberLogin) {
+    public Chat(Long id, String name, String creatorLogin, String memberLogin, String key) {
         this.id = id;
         this.name = name;
         this.creatorLogin = creatorLogin;
         this.memberLogin = memberLogin;
+        this.key = key;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getCreatorLogin() {

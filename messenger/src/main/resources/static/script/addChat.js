@@ -11,6 +11,13 @@ async function regDataSend(event){
     event.preventDefault();
     const login = document.getElementById("login").value;
     const name = document.getElementById("name").value;
+    let session;
+    try{
+        session = localStorage.getItem("session");
+    }catch(ReferenceError){
+        alert("Сперва войдите в аккаунт!");
+        return;
+    }
 
 //    const response = await fetch("http://192.168.0.173:8080/addChat",{
         const response = await fetch("/addChat",{
@@ -22,7 +29,7 @@ async function regDataSend(event){
                 body: JSON.stringify({
                     name: name,
                     memberLogin: login,
-                    session: session = localStorage.getItem("session")
+                    session: session
                 })
                 });
 
