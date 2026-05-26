@@ -6,10 +6,9 @@ import com.example.messenger.serveces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -39,5 +38,29 @@ public class UserController {
     public ResponseEntity<UserDTO> authorise(@RequestBody UserDTO user){
         UserDTO loggedUser = userService.auth(user);
         return  new ResponseEntity<>(loggedUser, HttpStatus.OK);
+    }
+
+    @GetMapping("/user/friends")
+    public ResponseEntity<ApiResponse<List<UserDTO>>> getAllFriends(@RequestParam String session){
+        List<UserDTO> friendsList = userService.getAllFriends(session);
+        return ResponseEntity.ok(
+                new ApiResponse<>(
+                        true,
+                        "",
+                        friendsList
+                )
+        );
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<ApiResponse<UserDTO>> getLoginBySession(@RequestParam String session){
+        UserDTO login = userService.getLoginBySession(session);
+        return ResponseEntity.ok(
+                new ApiResponse<>(
+                        true,
+                        "",
+                        login
+                )
+        );
     }
 }

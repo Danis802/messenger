@@ -19,4 +19,7 @@ public class FrontController {
 
     @GetMapping("/chat/add")
     public String renderAddChat(){return "addChat";}
+
+    @GetMapping("/userpage/{login}")
+    public String renderUserPage(){return "userpage";}
 }
