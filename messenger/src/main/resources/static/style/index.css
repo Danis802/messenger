@@ -11,14 +11,12 @@
             line-height: 1.4;
         }
 
-        /* главная обёртка — центрирование + отзывчивые отступы */
         .messenger-container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 1rem 1.5rem 3rem;
         }
 
-        /* ===== ХЕДЕР ===== */
         .main-header {
             display: flex;
             align-items: center;
@@ -51,16 +49,13 @@
             letter-spacing: -0.3px;
         }
 
-        /* иконка аккаунта */
         .account-link {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: white;
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.05);
             transition: all 0.2s ease;
             text-decoration: none;
             color: #2c3e66;
@@ -74,7 +69,6 @@
         .account-link:hover {
             background: #f0f2f8;
             transform: scale(1.03);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
         }
 
         .account-link:hover i {
@@ -82,7 +76,6 @@
             transform: scale(1.02);
         }
 
-        /* секция групп */
         .groups-section {
             margin-top: 0.5rem;
         }
@@ -115,14 +108,17 @@
             color: #2563eb;
         }
 
-        /* МАСШТАБИРУЕМАЯ СЕТКА ГРУПП — адаптивность, резиновость, переносы */
+    .group-badge a{
+        color: #00008B;
+        text-decoration: none;
+    }
+
         .chats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 1.25rem;
         }
 
-        /* Карточка группы — полноценная ссылка на чат */
         .group-card-link {
             text-decoration: none;
             color: inherit;

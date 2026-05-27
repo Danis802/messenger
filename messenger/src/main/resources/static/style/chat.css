@@ -1,4 +1,3 @@
-/* ----- RESET & ГЛОБАЛЬНЫЕ НАСТРОЙКИ ----- */
 * {
     margin: 0;
     padding: 0;
@@ -15,7 +14,6 @@ body {
     padding: 16px;
 }
 
-/* ----- КОНТЕЙНЕР ЧАТА (КАРТОЧКА) ----- */
 .chat-container {
     max-width: 800px;
     width: 100%;
@@ -30,7 +28,6 @@ body {
     transition: all 0.2s ease;
 }
 
-/* ----- ШАПКА ЧАТА ----- */
 .chat-header {
     background: #ffffff;
     padding: 18px 24px;
@@ -64,7 +61,6 @@ body {
     font-weight: 500;
 }
 
-/* ----- ОБЛАСТЬ СООБЩЕНИЙ (СКРОЛЛ) ----- */
 .chat-messages {
     flex: 1;
     overflow-y: auto;
@@ -76,7 +72,6 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Стиль скроллбара */
 .chat-messages::-webkit-scrollbar {
     width: 6px;
 }
@@ -91,7 +86,6 @@ body {
     border-radius: 10px;
 }
 
-/* ----- СООБЩЕНИЯ (ОБЩИЕ ПРАВИЛА) ----- */
 .message {
     max-width: 75%;
     display: flex;
@@ -118,7 +112,6 @@ body {
     margin-right: 12px;
 }
 
-/* Исходящие (пользователь) справа */
 .message--outgoing {
     align-self: flex-end;
     text-align: right;

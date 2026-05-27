@@ -56,12 +56,10 @@ async function loadUserPage(){
                             "Content-Type": "application/json"
                         }
                         });
-        console.log(response);
+
         const friends = await response.json();
-        console.log(friends);
 
         friends.data.forEach(friend => {
-        console.log(2);
             const friendDiv = document.createElement('div');
 
             friendDiv.addEventListener("click", () => {

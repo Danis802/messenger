@@ -25,7 +25,6 @@ function regDataSend(event){
                 })
                 }).then(response => response.json())
                 .then(data => {
-                console.log("Отправлено:", data);
                 window.location.href = "/";
                 localStorage.setItem("session",data['session']);
                 });

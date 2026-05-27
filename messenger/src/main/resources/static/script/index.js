@@ -18,16 +18,14 @@ async function getLogin(){
                                 "Content-Type": "application/json"
                             }
                             });
-    console.log(response);
     const login = await response.json();
     return login.data;
 }
 
 async function init(){
     const userInfo = await getLogin();
-    console.log(userInfo);
     document.getElementById("userpage").href = `/userpage/${userInfo.login}`
-
+    document.getElementById("userName").textContent = userInfo.name;
 }
 
 async function loadChats() {
@@ -51,7 +49,6 @@ async function loadChats() {
                     }
                     });
     const chats = await response.json();
-    console.log(chats);
 
     const chatList = document.getElementById('chats-grid');
 
