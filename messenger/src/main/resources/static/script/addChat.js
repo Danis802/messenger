@@ -15,8 +15,7 @@ async function regDataSend(event){
     try{
         session = localStorage.getItem("session");
     }catch(ReferenceError){
-        alert("Сперва войдите в аккаунт!");
-        return;
+        window.location.href = "/login";
     }
 
 //    const response = await fetch("http://192.168.0.173:8080/addChat",{

@@ -1,6 +1,17 @@
 document.addEventListener("DOMContentLoaded", ()=>{
     loadUserPage();
+    init();
 })
+
+function init(){
+    const button = document.getElementById("quit");
+    button.addEventListener("click", quitAccount);
+}
+
+function quitAccount(){
+    localStorage.removeItem("session");
+    window.location.href = "/login";
+}
 
 async function getLogin(){
     let session;
@@ -8,8 +19,7 @@ async function getLogin(){
         try{
             session = localStorage.getItem("session");
         }catch(ReferenceError){
-            alert("Сперва войдите в аккаунт!");
-            return;
+            window.location.href = "/login";
         }
     const response = await fetch(`/user?session=${session}`,{
                             method:"GET",
@@ -27,8 +37,7 @@ async function loadUserPage(){
         try{
             session = localStorage.getItem("session");
         }catch(ReferenceError){
-            alert("Сперва войдите в аккаунт!");
-            return;
+            window.location.href = "/login";
         }
             const friendsDiv = document.getElementById('friends-section');
 

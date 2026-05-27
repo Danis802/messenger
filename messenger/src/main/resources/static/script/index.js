@@ -9,8 +9,7 @@ async function getLogin(){
         try{
             session = localStorage.getItem("session");
         }catch(ReferenceError){
-            alert("Сперва войдите в аккаунт!");
-            return;
+            window.location.href = "/login";
         }
     const response = await fetch(`/user?session=${session}`,{
                             method:"GET",
@@ -25,27 +24,18 @@ async function getLogin(){
 }
 
 async function init(){
-    const button = document.getElementById("quit");
-    button.addEventListener("click", quitAccount);
     const userInfo = await getLogin();
     console.log(userInfo);
     document.getElementById("userpage").href = `/userpage/${userInfo.login}`
 
 }
 
-function quitAccount(){
-    localStorage.removeItem("session");
-}
-
-
-
 async function loadChats() {
     let session;
     try{
         session = localStorage.getItem("session");
     }catch(ReferenceError){
-        alert("Сперва войдите в аккаунт!");
-        return;
+        window.location.href = "/login";
     }
         const messageDiv = document.getElementById('chats-grid');
 

@@ -52,8 +52,7 @@ async function getKey(){
     try{
         session = localStorage.getItem("session");
     }catch(ReferenceError){
-        alert("Сперва войдите в аккаунт!");
-        return;
+        window.location.href = "/login";
     }
     const keyResponse = await fetch(`/chat/${chatId}/key?session=${session}`,{
         method:"GET",
@@ -75,8 +74,7 @@ async function sendMes(event){
         try{
             session = localStorage.getItem("session");
         }catch(ReferenceError){
-            alert("Сперва войдите в аккаунт!");
-            return;
+            window.location.href = "/login";
         }
 
         realKey = mixKey(chatKey);

@@ -131,6 +131,9 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    max-height: 200px;      /* фиксированная высота */
+    overflow-y: auto;       /* вертикальная прокрутка */
+    padding-right: 0.5rem;  /* чтобы скролл не наезжал на текст */
 }
 
 .friend-item {
@@ -170,47 +173,24 @@ body {
 
 /* Адаптивность для мобильных устройств */
 @media (max-width: 500px) {
-    body {
-        padding: 1rem;
-    }
-
     .profile-card {
         padding: 1.5rem;
-        border-radius: 1.5rem;
     }
-
     .profile-header {
         flex-direction: column;
         text-align: center;
         gap: 1rem;
     }
-
     .avatar {
         width: 70px;
         height: 70px;
         font-size: 1.7rem;
     }
-
     .user-name {
         font-size: 1.6rem;
     }
-
-    .user-login {
-        font-size: 0.9rem;
-    }
-
-    .friends-title {
-        font-size: 1.3rem;
-    }
-
-    .friend-avatar {
-        width: 40px;
-        height: 40px;
-        font-size: 0.9rem;
-    }
-
-    .friend-name {
-        font-size: 0.95rem;
+    .friends-list {
+        max-height: 180px;   /* чуть меньше на маленьких экранах */
     }
 }
 
@@ -242,4 +222,26 @@ body {
 /* Эффект при наведении */
 .top-left-button:hover {
     background-color: #0056b3;
+}
+
+.logout-button {
+    display: block;
+    width: 100%;
+    margin-top: 1.8rem;
+    padding: 0.75rem 1rem;
+    background-color: #dc2626;   /* ярко-красный */
+    color: white;
+    border: 2px solid #b91c1c;   /* заметная граница */
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+.logout-button:hover {
+    background-color: #b91c1c;
+}
+
+.logout-button:active {
+    transform: scale(0.98);
 }

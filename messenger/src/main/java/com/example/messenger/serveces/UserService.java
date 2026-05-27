@@ -14,6 +14,7 @@ import com.example.messenger.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -61,10 +62,10 @@ public class UserService {
         List<FriendsDTO> users = friendsRepository.findByLogin(sessionDTO.getLogin())
                 .orElse(Collections.emptyList());
         friends.addAll(users);
-        List<UserDTO> friendsList = Collections.emptyList();
+        List<UserDTO> friendsList = new ArrayList<>();
         for (FriendsDTO fr : friends){
             String login;
-            if (sessionDTO.getLogin().equals(fr.getFriendLogin())){
+            if (!sessionDTO.getLogin().equals(fr.getFriendLogin())){
                 login = fr.getFriendLogin();
             }else{
                 login = fr.getLogin();

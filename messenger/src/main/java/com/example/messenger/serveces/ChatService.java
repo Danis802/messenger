@@ -1,7 +1,9 @@
 package com.example.messenger.serveces;
 
 import com.example.messenger.database.Chat;
+import com.example.messenger.database.Friends;
 import com.example.messenger.dto.ChatDTO;
+import com.example.messenger.dto.FriendsDTO;
 import com.example.messenger.dto.SessionDTO;
 import com.example.messenger.dto.UserDTO;
 import com.example.messenger.exceptions.NoChatsException;
@@ -10,6 +12,7 @@ import com.example.messenger.exceptions.UserNotFoundException;
 import com.example.messenger.exceptions.WrongIdException;
 import com.example.messenger.mapper.ChatMapper;
 import com.example.messenger.repositories.ChatRepository;
+import com.example.messenger.repositories.FriendsRepository;
 import com.example.messenger.repositories.SessionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,6 +28,7 @@ public class ChatService {
     private ChatRepository chatRepository;
     private SessionRepository sessionRepository;
     private static final SecureRandom secureRandom = new SecureRandom();
+    private FriendsRepository friendsRepository;
 
     public ChatDTO createChat(ChatDTO chatDTO){
         SessionDTO sessionDTO = sessionRepository.findBySession(chatDTO.getSession())
@@ -40,6 +44,7 @@ public class ChatService {
             chatDTO.setCreatorLogin(creatorLogin);
             Chat chat = ChatMapper.mapToJPA(chatDTO);
             Chat savedChat = chatRepository.save(chat);
+            friendsRepository.save(new Friends(creatorLogin, chatDTO.getMemberLogin()));
             return ChatMapper.mapToDTO(savedChat);
         }else{
             throw new RuntimeException("Member does not exist");
